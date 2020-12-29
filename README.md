@@ -1,8 +1,7 @@
 # Introduction :
 Graph visualization is a way of representing structural information as diagrams of abstract graphs and networks. It has important applications in networking, bioinformatics, software engineering, database and web design, machine learning, and in visual interfaces for other technical domains..
 
-The aim of this project is to design and implement a library allowing to generate and represent finite state machine also know as finite automaton. The library will also implement algorithms to perform operations that are specific to finite state automaton : Determination, Minimization, Complementary, Elimination of 
-<img src="https://render.githubusercontent.com/render/math?math=$$ε$$"> transitions, ...
+The aim of this project is to design and implement a library allowing to generate and represent finite state machine also know as finite automaton. The library will also implement algorithms to perform operations that are specific to finite state automaton : Determination, Minimization, Complementary, Elimination of ***ε*** transitions, ...
 
 # Definition of a finite automaton :
 A nondeterministic finite automaton (NFA), or nondeterministic finite-state machine is represented formally by a 5-tuple : ***(Q, Σ, Δ, q0, F)***, consisting of :
@@ -33,13 +32,13 @@ You can generate random Nondeterministic finite automaton using this library. Th
 </p>
 
 ### Elimination of ε-transitions in a finite state machine : 
-An epsilon transition allows a finite state machine to change its state spontaneously, i.e. without consuming an input symbol. It may appear in almost all kinds of nondeterministic finite state machine in formal language theory. Nondeterministic finite automaton with $$ε$$ can be converted to NFA without $$ε$$. We achieve this transformation by using the following method : 
+An epsilon transition allows a finite state machine to change its state spontaneously, i.e. without consuming an input symbol. It may appear in almost all kinds of nondeterministic finite state machine in formal language theory. Nondeterministic finite automaton with ***ε*** can be converted to NFA without ***ε***. We achieve this transformation by using the following method : 
 
 
-1. Find out all the ε transitions from each state from $$Q$$. That will be called as $$ε$$-closure{$$qi$$} where $$qi ∈ Q$$.
-2. Then $$δ'$$ transitions can be obtained. The $$δ'$$ transitions mean a $$ε$$-closure on $$δ$$ moves.
+1. Find out all the ε transitions from each state from ***Q***. That will be called as ***ε***-closure{***qi***} where ***qi ∈ Q***.
+2. Then ***δ'*** transitions can be obtained. The ***δ'*** transitions mean a ***ε***-closure on ***δ*** moves.
 3. Repeat Step-2 for each input symbol and each state of given NFA.
-4. Using the resultant states, the transition table for equivalent NFA without $$ε$$ can be built.
+4. Using the resultant states, the transition table for equivalent NFA without ***ε*** can be built.
 
 <p align="center">
    <img src="https://github.com/AmineAgrane/finite-state-automaton-library/blob/main/doc/epsilon%20production.png" height="400" align="center"/>
@@ -54,21 +53,28 @@ A finite automaton is said to be complete if, for any state ***p*** and symbol *
 A simple way to get a complete automaton equivalent (i.e. recognizing the same language) to a non complete automaton is to add a so-called "trash" state, and to associate the missing transitions to it :
 1. Add the trash state ***P*** to the finite automaton.
 2. All transitions of the incomplete automaton ***A*** are kept in the complete automaton ***A'***.
-3. Add a transition ***q,x,P)*** for each missing transition ***q,x,q*** in ***A***
-4. Add a transition ***P,x,P)*** for each symbol of the alphabet
+3. Add a transition ***(q,x,P)*** for each missing transition ***(q,x,q)*** in ***A***
+4. Add a transition ***(P,x,P)*** for each symbol of the alphabet
 
 <p align="center">
    <img src="https://github.com/AmineAgrane/finite-state-automaton-library/blob/main/doc/complet.png" height="400" align="center"/>
 </p>
 
 ### Transpose of a finite automaton : 
-In automaton theory, the transposed automaton of a finite automaton ***A*** noted $$A^{R}$$, is another finite automaton, which recognizes mirrors of words recognized by ***A*** For example, if ***A*** recognizes the word "aababa", then  ***A^{R}*** recognizes the word "ababaa". This is also called a mirror automaton. Another notation is ***A^{t}***. The transposed automaton is notably used in Brzozowski's algorithm for the minimization of a deterministic finite automaton.
+In automaton theory, the transposed automaton of a finite automaton ***A*** noted ***A^{R}***, is another finite automaton, which recognizes mirrors of words recognized by ***A*** For example, if ***A*** recognizes the word "aababa", then  ***A^{R}*** recognizes the word "ababaa". This is also called a mirror automaton. Another notation is ***A^{t}***. The transposed automaton is notably used in Brzozowski's algorithm for the minimization of a deterministic finite automaton.
 
 <p align="center">
    <img src="https://github.com/AmineAgrane/finite-state-automaton-library/blob/main/doc/transpose.png" height="400" align="center"/>
 </p>
 
 ### Transform a Nondeterministic finite automaton to a Deterministic finite automaton:
+A deterministic finite automaton (DFA) also known as deterministic finite-state machine (DFSM) is a finite-state machine that accepts or rejects a given string of symbols, by running through a state sequence uniquely determined by the string. Deterministic refers to the uniqueness of the computation run. In  Nondeterministic finite automaton, when a specific input is given to the current state, the machine goes to multiple states. It can have zero, one or more than one move on a given input symbol. On the other hand, in a Deterministic finite automaton, when a specific input is given to the current state, the machine goes to only one state. DFA has only one move on a given input symbol.
+
+To convert a Nondeterministic finite automaton to a Deterministic finite automaton, we apply the following steps : 
+1. Initially ***Q'*** = ***ϕ***.
+2. Add ***q0*** of NFA to ***Q'***. Then find the transitions from this start state
+3. In ***Q'***, find the possible set of states for each input symbol. If this set of states is not in ***Q'***, then add it to ***Q'***.
+4. In DFA, the final state will be all the states which contain ***F*** (final states of NFA)
 
 ### Minimization of a Deterministic finite automaton :
 DFA minimization is the task of transforming a given deterministic finite automaton (DFA) into an equivalent DFA that has a minimum number of states. Here, two DFAs are called equivalent if they recognize the same regular language.   
