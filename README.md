@@ -1,7 +1,7 @@
 # Introduction :
 Graph visualization is a way of representing structural information as diagrams of abstract graphs and networks. It has important applications in networking, bioinformatics, software engineering, database and web design, machine learning, and in visual interfaces for other technical domains..
 
-The aim of this project is to design and implement a library allowing to generate and represent finite state machine also know as finite automaton. The library will also implement algorithms to perform operations that are specific to finite state automaton : Determination, Minimization, Complementary, Elimination of ***ε*** transitions, ...
+The aim of this project is to design and implement a library allowing to generate and represent finite state machine also know as finite automaton. The library will also implement algorithms to perform operations that are specific to finite state automaton : Determination, Minimization, Complementary, Elimination of ***ε*** transitions, etc
 
 # Definition of a finite automaton :
 A nondeterministic finite automaton (NFA), or nondeterministic finite-state machine is represented formally by a 5-tuple : ***(Q, Σ, Δ, q0, F)***, consisting of :
