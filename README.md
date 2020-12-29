@@ -76,6 +76,10 @@ To convert a Nondeterministic finite automaton to a Deterministic finite automat
 3. In ***Q'***, find the possible set of states for each input symbol. If this set of states is not in ***Q'***, then add it to ***Q'***.
 4. In DFA, the final state will be all the states which contain ***F*** (final states of NFA)
 
+<p align="center">
+   <img src="https://github.com/AmineAgrane/finite-state-automaton-library/blob/main/doc/determination.png" height="400" align="center"/>
+</p>
+
 ### Minimization of a Deterministic finite automaton :
 DFA minimization is the task of transforming a given deterministic finite automaton (DFA) into an equivalent DFA that has a minimum number of states. Here, two DFAs are called equivalent if they recognize the same regular language.   
 
